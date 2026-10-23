@@ -4,7 +4,7 @@ export const EMAIL = 'nabilpervezconsulting@gmail.com';
 
 export const links = [
   { href: '#offer', label: 'What we do' },
-  { href: '#award', label: 'Work' },
+  { href: '#work', label: 'Work' },
   { href: '#how', label: 'How it works' },
   { href: '#about', label: 'About' },
 ];
@@ -22,7 +22,8 @@ export const clientsA = [
 export const clientsB = [
   'Boston Breach', 'Houston Outlaws', 'Nerd Street Gamers', 'World Series of Warzone', 'Twitch Rivals',
   'SunSpear Games', 'AOE Creative', 'Blast Radius', 'Metal Umbrella', 'A-KON', 'Freshcut', 'Metaview',
-  'PVP Live', 'IGDA Dallas',
+  'PVP Live', 'IGDA Dallas', 'NACON', 'Ellevens', 'Fancurve', 'Alloy', 'Geekletes', 'Team Fugitive',
+  'The Story Mob', 'McCown Evans', 'Immortal: Gates of Pyre', 'Stay Plugged In', 'FCFL',
 ];
 
 export type Offering = {
@@ -44,24 +45,46 @@ export const offerings: Offering[] = [
     items: ['Product strategy', 'UX & prototypes', 'Roadmaps', 'Launch'] },
 ];
 
-export const work = [
-  { src: '/img/red-bull.jpg', alt: 'Red Bull', w: 1000, h: 563, size: 'wide' },
-  { src: '/img/outlaws.jpg', alt: 'Houston Outlaws', w: 1000, h: 563, size: 'tall' },
-  { src: '/img/cloud9.jpg', alt: 'Cloud9 × One Piece', w: 1000, h: 500, size: '' },
-  { src: '/img/warzone.jpg', alt: 'World Series of Warzone', w: 1000, h: 1000, size: '' },
-  { src: '/img/optic.jpg', alt: 'OpTic Gaming', w: 1000, h: 1000, size: '' },
-  { src: '/img/boston-breach.jpg', alt: 'Boston Breach', w: 1000, h: 558, size: 'wide' },
-  { src: '/img/a-kon.jpg', alt: 'A-KON', w: 1000, h: 563, size: '' },
-  { src: '/img/nsg.jpg', alt: 'Nerd Street Gamers', w: 1000, h: 561, size: '' },
-  { src: '/img/pvp-live.jpg', alt: 'PVP Live', w: 1000, h: 563, size: '' },
-  { src: '/img/evo.jpg', alt: 'EVO', w: 1000, h: 484, size: '' },
+// Recent work bento: columns of tiles from the portfolio. Pillar = which offering it shows.
+// Ratios are width / height of the stored image (public/img/work, 720 px and 480 px WebP).
+export type Pillar = 'Brand' | 'Web' | 'AI' | 'Product';
+export type Tile = { slug: string; client: string; pillar: Pillar; alt: string; ratio: number };
+export type Column = { kind: 'tall' | 'stack' | 'wide' | 'sq'; tiles: Tile[] };
+
+const t = (slug: string, client: string, pillar: Pillar, alt: string, ratio: number): Tile => ({ slug, client, pillar, alt, ratio });
+export const workColumns: Column[] = [
+  { kind: 'tall', tiles: [t('akon-pass', 'A-KON', 'Brand', 'A-KON daily pass with the anime mascot', 0.71)] },
+  { kind: 'stack', tiles: [t('c9-tees', 'Cloud9 × One Piece', 'Brand', 'Cloud9 × One Piece tees and merch', 2), t('outlaws-tour', 'Houston Outlaws', 'Brand', 'Fans at a Houston Outlaws player tour stop', 1.33)] },
+  { kind: 'wide', tiles: [t('redbull-run', 'Red Bull', 'Product', 'Red Bull arcade cabinet activation', 1.78)] },
+  { kind: 'stack', tiles: [t('lego-2', 'LEGO Games', 'Brand', 'LEGO Games branded backpack', 2), t('ow-houston', 'Overwatch League', 'Brand', 'Overwatch League Houston in-game spray', 1)] },
+  { kind: 'tall', tiles: [t('lego-1', 'LEGO Games', 'Brand', 'LEGO Batman on a LEGO Games brand layout', 0.79)] },
+  { kind: 'sq', tiles: [t('nsg-social', 'Nerd Street Gamers', 'Brand', 'Nerd Street Gamers Local Gaming social post', 1)] },
+  { kind: 'stack', tiles: [t('metaview-2', 'Metaview', 'Brand', 'Metaview billboard campaign on a brick wall', 1.83), t('igp-logo', 'Immortal: Gates of Pyre', 'Brand', 'Immortal: Gates of Pyre logo', 1.67)] },
+  { kind: 'wide', tiles: [t('evo', 'EVO', 'Web', 'Evolution Championship Series event website', 2.07)] },
+  { kind: 'tall', tiles: [t('igda', 'IGDA Dallas', 'Brand', 'IGDA Dallas event poster', 0.75)] },
+  { kind: 'stack', tiles: [t('freshcut-m1', 'Freshcut', 'Brand', 'Freshcut billboard mockup', 1.78), t('mce-collage', 'McCown Evans', 'Web', 'McCown Evans website on laptop and devices', 1.5)] },
+  { kind: 'sq', tiles: [t('ow-paris', 'Overwatch League', 'Brand', 'Overwatch League Paris in-game spray', 1)] },
+  { kind: 'stack', tiles: [t('igp-ui', 'Immortal: Gates of Pyre', 'Product', 'Immortal: Gates of Pyre character select screen', 1.78), t('nacon-skaters', 'NACON', 'Product', 'NACON Session skateboarding game shots', 1.49)] },
+  { kind: 'tall', tiles: [t('alloy', 'Alloy', 'Web', 'Alloy mobile site on a phone', 0.81)] },
+  { kind: 'wide', tiles: [t('outlaws-promo', 'Houston Outlaws', 'Brand', 'Houston Outlaws T-Mobile promotional booth', 1.78)] },
+  { kind: 'stack', tiles: [t('c9-hats', 'Cloud9 × One Piece', 'Brand', 'Cloud9 × One Piece hats and apparel on models', 1.6), t('mu-1', 'Metal Umbrella', 'Brand', 'Metal Umbrella apparel and identity', 1.31)] },
+  { kind: 'tall', tiles: [t('metaview-bill', 'Metaview', 'Brand', 'Metaview anime campaign artwork', 0.81)] },
+  { kind: 'stack', tiles: [t('nsg-card', 'Nerd Street Gamers', 'Brand', 'Nerd Street Gamers business cards', 1.5), t('spi', 'Stay Plugged In', 'Web', 'Stay Plugged In platform on desktop', 1.41)] },
+  { kind: 'sq', tiles: [t('akon-badge', 'A-KON', 'Brand', 'A-KON event badge on a lanyard', 1)] },
+  { kind: 'stack', tiles: [t('igp-ks', 'Immortal: Gates of Pyre', 'Brand', 'Immortal Kickstarter launch countdown', 1.78), t('geekletes', 'Geekletes', 'Brand', 'Geekletes event identity', 1.78)] },
+  { kind: 'sq', tiles: [t('mu-2', 'Metal Umbrella', 'Brand', 'Metal Umbrella logo sketches', 0.9)] },
+  { kind: 'stack', tiles: [t('fancurve', 'Fancurve', 'Product', 'Fancurve collectible rarity tiers', 1.47), t('freshcut-access', 'Freshcut', 'Brand', 'Freshcut accessories brand layout', 1.78)] },
+  { kind: 'sq', tiles: [t('fugitive', 'Team Fugitive', 'Brand', 'Team Fugitive jerseys and apparel', 1.07)] },
+  { kind: 'wide', tiles: [t('c9-luffy', 'Cloud9 × One Piece', 'Brand', 'Cloud9 × One Piece Luffy line-art key visual', 1.6)] },
+  { kind: 'stack', tiles: [t('igp-web', 'Immortal: Gates of Pyre', 'Web', 'Immortal: Gates of Pyre website', 0.95), t('mce-intro', 'McCown Evans', 'Web', 'McCown Evans site on a desktop monitor', 1.15)] },
+  { kind: 'stack', tiles: [t('outlaws-watch', 'Houston Outlaws', 'Brand', 'Houston Outlaws watch party with T-Mobile', 1.33), t('lego-3', 'LEGO Games', 'Brand', 'LEGO Games branded sneakers', 1.39)] },
 ];
 
 export const steps = [
-  { n: '01', title: 'Talk.', text: "One call to find what's actually holding you back." },
-  { n: '02', title: 'Plan.', text: 'One scope, one price. Half to start.' },
-  { n: '03', title: 'Launch.', text: 'We build it, you review it, it goes live.' },
-];
+  { n: '01', id: 'talk', title: 'Talk.', text: "One 20-minute call to find what's actually holding you back." },
+  { n: '02', id: 'plan', title: 'Plan.', text: 'One scope, one fixed price, one document. Half to start.' },
+  { n: '03', id: 'launch', title: 'Launch.', text: 'We build it, you review it within 48 hours, it goes live.' },
+] as const;
 
 export const voices = [
   { quote: "He's an X-Factor. He immediately improves the team he's working with.", name: 'Dustin Steiner', role: 'Senior Associate, GALE' },

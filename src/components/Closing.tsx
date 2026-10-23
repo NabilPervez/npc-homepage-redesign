@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BOOKING_URL, EMAIL, links, steps, voices } from '../content';
 import Reveal from './Reveal';
+import StepArt from './StepArt';
 import './Closing.css';
 
 export function Process() {
@@ -11,6 +12,7 @@ export function Process() {
         <ol className="steps">
           {steps.map((s, i) => (
             <Reveal as="li" key={s.n} className="step" delay={i}>
+              <div className="step-card"><StepArt id={s.id} /></div>
               <span className="n">{s.n}</span>
               <h3>{s.title}</h3>
               <p>{s.text}</p>

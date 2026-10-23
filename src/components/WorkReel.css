@@ -1,0 +1,37 @@
+/* Bento reel: every column is the reel height H; tiles split it. Widths are multiples of H so the
+   rhythm stays the same at any size. Phones get a shorter H. */
+.reel-sec{overflow:hidden}
+.head.center{text-align:center;justify-items:center;grid-template-columns:1fr}
+.reel-sec .head h2{font-size:var(--fs-h2)}
+.rc-wrap{position:relative}
+.rc{--H:clamp(300px,82vw,440px);--g:10px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;display:flex;gap:var(--g);
+  padding-inline:var(--g);overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;outline-offset:-2px}
+.rc::-webkit-scrollbar{display:none}
+@media (min-width:760px){.rc{--H:clamp(380px,38vw,500px)}}
+.rc-set{display:flex;gap:var(--g);flex:none}
+.rc-col{display:flex;flex-direction:column;gap:var(--g);height:var(--H);flex:none}
+.rc-tall{width:calc(var(--H) * .62)}
+.rc-stack{width:calc(var(--H) * .9)}
+.rc-wide{width:calc(var(--H) * 1.4)}
+.rc-sq{width:var(--H)}
+.rc-tile{position:relative;margin:0;flex:1 1 0;min-height:0;border-radius:14px;overflow:hidden;background:var(--ink-2);box-shadow:inset 0 0 0 1px var(--hair)}
+.rc-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;user-select:none;transition:transform 1.2s var(--ease)}
+.rc-tile:hover img{transform:scale(1.04)}
+.rc-tile figcaption{position:absolute;left:10px;bottom:10px;right:10px;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none}
+.rc-tile figcaption span{font-size:var(--fs-micro);font-weight:500;padding:5px 10px;border-radius:999px;
+  background:rgb(7 16 31/.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);white-space:nowrap}
+.rc-pill{color:var(--k,var(--gold-3))}
+.rc-tile[data-pillar="Brand"]{--k:var(--brand-a)}
+.rc-tile[data-pillar="Web"]{--k:var(--web-b)}
+.rc-tile[data-pillar="AI"]{--k:var(--ai-b)}
+.rc-tile[data-pillar="Product"]{--k:var(--gold-1)}
+/* Tags show on hover on desktop, always on touch screens */
+@media (hover:hover){
+  .rc-tile figcaption{opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+  .rc-tile:hover figcaption{opacity:1;transform:none}
+}
+.rc-toggle{width:44px;height:44px;border-radius:999px;
+  border:1px solid var(--hair-2);background:var(--ink);cursor:pointer;font-size:11px;color:var(--muted)}
+.rc-count{display:flex;align-items:center;gap:12px}
+.rc-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:20px;font-size:var(--fs-sm);color:var(--faint)}
+.rc-foot a{color:var(--gold-3);text-decoration:none}

@@ -1,13 +1,32 @@
-/* Steps: a real sequence, hairline separated; three across on desktop */
-.steps{margin:0;padding:0;list-style:none;display:grid;border-top:1px solid var(--hair)}
-.step{display:grid;grid-template-columns:44px 1fr;gap:4px 12px;padding:24px 0;border-bottom:1px solid var(--hair)}
-.step .n{grid-row:1/3;font-size:var(--fs-micro);font-weight:500;color:var(--gold-3);font-variant-numeric:tabular-nums;padding-top:3px}
-.step p{color:var(--muted);font-size:var(--fs-sm)}
-@media (min-width:860px){
-  .steps{grid-template-columns:repeat(3,1fr)}
-  .step{grid-template-columns:1fr;border-bottom:0;padding:32px 32px 32px 0}
-  .step+.step{padding-left:32px;border-left:1px solid var(--hair)}
-  .step .n{grid-row:auto}
+/* Steps: each with a drawn visual on a lattice card, then number, title, line.
+   Phones: stacked; desktop: three across with hairline seams. */
+.steps{margin:0;padding:0;list-style:none;display:grid;gap:40px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;align-content:start}
+.step-card{grid-column:1/-1;margin-bottom:14px;aspect-ratio:3/2;border:1px solid var(--hair);border-radius:var(--radius);
+  background:linear-gradient(180deg,var(--ink-2),var(--ink));display:grid;place-items:center;overflow:hidden;position:relative}
+/* The card pattern, faint and fading out toward the drawing */
+.step-card::before{content:"";position:absolute;inset:0;background:var(--pattern) center/72px;opacity:.28;
+  -webkit-mask:radial-gradient(70% 80% at 50% 50%,transparent 35%,#000 90%);mask:radial-gradient(70% 80% at 50% 50%,transparent 35%,#000 90%)}
+.step-art{position:relative;width:86%;height:auto}
+.step-art .l,.step-art .f,.step-art .g,.step-art .gf,.step-art .a,.step-art .ac{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.step-art .l{stroke:var(--muted);stroke-width:1.6}
+.step-art .f{stroke:var(--faint);stroke-width:1.6}
+.step-art .g{stroke:var(--gold-5);stroke-width:1.6}
+.step-art .gf{stroke:var(--gold-5);stroke-width:1.4;opacity:.7}
+.step-art .a{stroke:var(--gold-3);stroke-width:1.6;fill:rgb(221 184 74/.08)}
+.step-art .ac{stroke:var(--gold-2);stroke-width:2}
+.step-art .gfill{fill:var(--gold-3)}
+.step-art .dot{fill:var(--faint)}
+.step .n{font-size:var(--fs-micro);font-weight:500;color:var(--gold-3);font-variant-numeric:tabular-nums;padding-top:3px}
+.step p{grid-column:1/-1;color:var(--muted);font-size:var(--fs-sm);max-width:34ch}
+@media (min-width:860px){.steps{grid-template-columns:repeat(3,1fr);gap:32px}}
+/* Draw the lines in once the step is revealed */
+@media (prefers-reduced-motion:no-preference){
+  .js .step .step-art :is(path,rect,circle):not(.gfill,.dot){stroke-dasharray:1;stroke-dashoffset:1}
+  .js .step .step-art .gfill{opacity:0;transition:opacity .8s var(--ease) 1.2s}
+  .js .step.in .step-art :is(path,rect,circle):not(.gfill,.dot){animation:draw 1.6s var(--ease) .3s both}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .js .step.in .step-art .gfill{opacity:1}
 }
 
 /* About: photo + two-tone statement */

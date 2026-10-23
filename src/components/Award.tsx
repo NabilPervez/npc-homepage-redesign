@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { work } from '../content';
 import Reveal, { useInView } from './Reveal';
 import './iso.css';
 import './Award.css';
@@ -37,18 +36,6 @@ export default function Award() {
         </figure>
       </div>
 
-      {/* Work gallery: swipe on phones, a bento grid on desktop */}
-      <div className="wrap">
-        <Reveal className="gallery-head"><h3>Recent work</h3><a href="https://nabilpervez.com/portfolio" target="_blank" rel="noopener">Full portfolio →</a></Reveal>
-      </div>
-      <ul className="gallery" aria-label="Recent work">
-        {work.map((w, i) => (
-          <Reveal as="li" key={w.src} className={`g g-${w.size || 'n'}`} delay={i % 4}>
-            <img src={w.src} alt={w.alt} width={w.w} height={w.h} loading="lazy" decoding="async" />
-            <span>{w.alt}</span>
-          </Reveal>
-        ))}
-      </ul>
     </section>
   );
 }

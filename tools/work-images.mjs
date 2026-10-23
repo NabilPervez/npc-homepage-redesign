@@ -3,9 +3,9 @@
 import sharp from 'sharp';
 import { mkdirSync, writeFileSync } from 'node:fs';
 const R = 'D:/Code/_ref/NabilPervez_portfolio/web/public/images/portfolio/';
+// T-Mobile is kept off the site (Nabil, 2026-10-23, v7), so no T-Mobile booth or watch-party shots.
 export const PICKS = [
   ['redbull-run', 'redbull/redbull-run.jpg'],
-  ['redbull-arc', 'redbull/redbull-arc.png'],
   ['c9-luffy', 'one-piece-x-cloud9/6_luffy.webp'],
   ['c9-tees', 'one-piece-x-cloud9/3_tees.webp'],
   ['c9-hats', 'one-piece-x-cloud9/7_hats.webp'],
@@ -14,9 +14,7 @@ export const PICKS = [
   ['lego-3', 'lego_27/fdb310126553707.615376f58e9ef.png'],
   ['ow-houston', 'overwatch-league-in-game-sprays/overwatch-league-in-game-sprays-Houston.png'],
   ['ow-paris', 'overwatch-league-in-game-sprays/overwatch-league-in-game-sprays-Paris.png'],
-  ['outlaws-promo', 'outlaws/outlaws-desktop_outlaws_promotional.jpg'],
   ['outlaws-tour', 'outlaws/outlaws-IMG_20180518_203602-scaled.jpg'],
-  ['outlaws-watch', 'outlaws/outlaws-MVIMG_20180526_172827-scaled.jpg'],
   ['akon-pass', 'a-kon/a-kon-AKON_DailyPass.jpg'],
   ['akon-badge', 'a-kon/a-kon-AKON_Badge-Day.png'],
   ['freshcut-m1', 'freshcut/freshcut-m1.jpg'],
@@ -41,7 +39,6 @@ export const PICKS = [
   ['geekletes', 'geekletes/geekletes-geekletes.png'],
   ['igda', 'igda-dallas/igda-dallas-IDGA_Poster_9-16.png'],
   ['fugitive', 'team-fugitive/cde8d7131606503.62accc5186b73.png'],
-  ['fcfl', 'fcfl/fcfl-color-pla.png'],
 ];
 if (process.argv[1].endsWith('work-images.mjs')) {
   mkdirSync('public/img/work', { recursive: true });

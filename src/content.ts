@@ -66,7 +66,6 @@ export const workColumns: Column[] = [
   { kind: 'sq', tiles: [t('ow-paris', 'Overwatch League', 'Brand', 'Overwatch League Paris in-game spray', 1)] },
   { kind: 'stack', tiles: [t('igp-ui', 'Immortal: Gates of Pyre', 'Product', 'Immortal: Gates of Pyre character select screen', 1.78), t('nacon-skaters', 'NACON', 'Product', 'NACON Session skateboarding game shots', 1.49)] },
   { kind: 'tall', tiles: [t('alloy', 'Alloy', 'Web', 'Alloy mobile site on a phone', 0.81)] },
-  { kind: 'wide', tiles: [t('outlaws-promo', 'Houston Outlaws', 'Brand', 'Houston Outlaws T-Mobile promotional booth', 1.78)] },
   { kind: 'stack', tiles: [t('c9-hats', 'Cloud9 × One Piece', 'Brand', 'Cloud9 × One Piece hats and apparel on models', 1.6), t('mu-1', 'Metal Umbrella', 'Brand', 'Metal Umbrella apparel and identity', 1.31)] },
   { kind: 'tall', tiles: [t('metaview-bill', 'Metaview', 'Brand', 'Metaview anime campaign artwork', 0.81)] },
   { kind: 'stack', tiles: [t('nsg-card', 'Nerd Street Gamers', 'Brand', 'Nerd Street Gamers business cards', 1.5), t('spi', 'Stay Plugged In', 'Web', 'Stay Plugged In platform on desktop', 1.41)] },
@@ -77,7 +76,7 @@ export const workColumns: Column[] = [
   { kind: 'sq', tiles: [t('fugitive', 'Team Fugitive', 'Brand', 'Team Fugitive jerseys and apparel', 1.07)] },
   { kind: 'wide', tiles: [t('c9-luffy', 'Cloud9 × One Piece', 'Brand', 'Cloud9 × One Piece Luffy line-art key visual', 1.6)] },
   { kind: 'stack', tiles: [t('igp-web', 'Immortal: Gates of Pyre', 'Web', 'Immortal: Gates of Pyre website', 0.95), t('mce-intro', 'McCown Evans', 'Web', 'McCown Evans site on a desktop monitor', 1.15)] },
-  { kind: 'stack', tiles: [t('outlaws-watch', 'Houston Outlaws', 'Brand', 'Houston Outlaws watch party with T-Mobile', 1.33), t('lego-3', 'LEGO Games', 'Brand', 'LEGO Games branded sneakers', 1.39)] },
+  { kind: 'sq', tiles: [t('lego-3', 'LEGO Games', 'Brand', 'LEGO Games branded sneakers', 1.39)] },
 ];
 
 export const steps = [

@@ -53,9 +53,7 @@ export default function Statement() {
         </div>
         <Reveal className="st-award" delay={1}>
           <span className="label">Award-winning creative</span>
-          <div className="trophy"><Trophy /></div>
-          <p className="st-cap">Tempest Award · Best Social Experience</p>
-        </Reveal>
+          <div className="trophy"><Trophy /></div>        </Reveal>
       </div>
     </section>
   );

@@ -98,7 +98,7 @@ export default function WorkReel() {
     <section className="section reel-sec" id="work" aria-labelledby="work-title">
       <div className="wrap">
         <Reveal className="head center">
-          <h2 id="work-title">Recent work.<br /><span className="muted">Award-worthy work, made for brands of every size.</span></h2>
+          <h2 id="work-title">Our work.<br /><span className="muted">Award winning, made for brands of every size.</span></h2>
         </Reveal>
       </div>
       <Reveal className="rc-wrap">

@@ -57,9 +57,19 @@
   .q{transition:opacity .6s var(--ease)}
 }
 
-.how-buy{margin-top:56px;padding-top:24px;border-top:1px solid var(--hair);display:grid;gap:12px;font-size:var(--fs-sm);color:var(--muted)}
-.how-buy b{color:var(--text);font-weight:500}
-@media (min-width:760px){.how-buy{grid-template-columns:1fr 1fr;gap:32px}}
+/* Two ways to buy: two cards that read as the choice. Nabil, 2026-10-23: "needs to stand out more". */
+.how-buy{margin-top:56px;display:grid;gap:12px}
+@media (min-width:760px){.how-buy{grid-template-columns:1fr 1fr;gap:16px}}
+.buy{position:relative;overflow:hidden;display:grid;gap:10px;padding:28px 24px;border-radius:var(--radius);
+  border:1px solid var(--hair-2);background:linear-gradient(160deg,var(--ink-3),var(--ink-2))}
+.buy-k{font-size:var(--fs-micro);font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-3)}
+.buy h3{font-size:var(--fs-feat);font-weight:600;letter-spacing:var(--track);line-height:1.15}
+.buy p{color:var(--muted);font-size:var(--fs-body);max-width:30ch}
+.buy-gold{border-color:transparent;background:var(--grad);color:var(--ink)}
+.buy-gold .buy-k,.buy-gold h3,.buy-gold p{color:var(--ink)}
+.buy-gold::after{content:"";position:absolute;inset:0;background:var(--pattern) right -20px center/88px;opacity:.18;mix-blend-mode:multiply;
+  -webkit-mask:linear-gradient(90deg,transparent 40%,#000);mask:linear-gradient(90deg,transparent 40%,#000);pointer-events:none}
+@media (min-width:760px){.buy{padding:40px}}
 
 /* Reveal: arcs draw in one after another when the tile comes into view */
 @media (prefers-reduced-motion:no-preference){

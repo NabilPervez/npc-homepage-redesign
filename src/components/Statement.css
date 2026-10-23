@@ -5,3 +5,9 @@
 @media (min-width:760px){.statement .say{max-width:34ch}}
 .statement .w{color:var(--hair-2);transition:color .6s var(--ease)}
 .statement .w.lit{color:var(--text)}
+/* Two columns on desktop: the statement, then the trophy as the proof (Nabil, 2026-10-23) */
+.st-grid{display:grid;gap:48px;align-items:center}
+.st-award{display:grid;justify-items:center;text-align:center;gap:8px}
+.st-award .label{margin-bottom:0}
+.st-cap{font-size:var(--fs-sm);color:var(--muted)}
+@media (min-width:900px){.st-grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:64px}}

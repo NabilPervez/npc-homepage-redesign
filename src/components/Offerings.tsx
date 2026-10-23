@@ -87,7 +87,7 @@ export default function Offerings() {
     <section className="section offerings" id="offer" aria-labelledby="offer-title">
       <div className="wrap">
         <Reveal className="head">
-          <h2 id="offer-title">One NPC. <span className="gold">Four ways in.</span></h2>
+          <h2 id="offer-title">One Agency. <span className="gold">Four Ways We Help.</span></h2>
           <p>Start with one. Most clients end up with all four, run by one team.</p>
         </Reveal>
 
@@ -110,10 +110,18 @@ export default function Offerings() {
           <Rail active={active} setActive={setActive} rail={rail} />
         </div>
 
-        <Reveal className="how-buy">
-          <p><b>Start with one project.</b> Fixed price, fixed scope, one document.</p>
-          <p><b>Stay on retainer.</b> Your fractional brand, web, AI and product team, monthly.</p>
-        </Reveal>
+        <div className="how-buy">
+          <Reveal className="buy">
+            <span className="buy-k">01 · Project</span>
+            <h3>Start with one project.</h3>
+            <p>Fixed price, fixed scope, one document.</p>
+          </Reveal>
+          <Reveal className="buy buy-gold" delay={1}>
+            <span className="buy-k">02 · Retainer</span>
+            <h3>Stay on retainer.</h3>
+            <p>Your fractional brand, web, AI and product team, monthly.</p>
+          </Reveal>
+        </div>
       </div>
     </section>
   );

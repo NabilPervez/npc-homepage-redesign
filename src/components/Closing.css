@@ -62,7 +62,16 @@
 .close{position:relative;overflow:hidden;background:var(--ink-2)}
 .close::before{content:"";position:absolute;inset:0;background:var(--pattern) center/88px;opacity:.22;
   -webkit-mask:radial-gradient(circle at 85% 50%,#000,transparent 65%);mask:radial-gradient(circle at 85% 50%,#000,transparent 65%)}
-.close-in{position:relative;display:grid;gap:24px}
+.close-in{position:relative;z-index:1;display:grid;gap:24px}
+/* The hero's ripple returns here: two rings of the card pattern wash outward from the right */
+.close .ring{position:absolute;inset:-60% -40% -60% 10%;opacity:0;pointer-events:none;
+  -webkit-mask:radial-gradient(circle closest-side,transparent 74%,rgb(0 0 0/.4) 86%,#000 93%,rgb(0 0 0/.4) 98%,transparent 100%) 70% 50%/0 0 no-repeat;
+  mask:radial-gradient(circle closest-side,transparent 74%,rgb(0 0 0/.4) 86%,#000 93%,rgb(0 0 0/.4) 98%,transparent 100%) 70% 50%/0 0 no-repeat}
+.close .ring .pattern{position:absolute;inset:0;background:url(/img/hero-pattern.png) 0 0/64px;filter:brightness(1.6) saturate(1.35)}
+@media (prefers-reduced-motion:no-preference){
+  .close .ring{animation:ripple 10s var(--ease) infinite}.close .ring+.ring{animation-delay:-5s}
+}
+@media (prefers-reduced-motion:reduce){.close .ring{display:none}}
 .close h2{font-size:var(--fs-h1);line-height:1.04;max-width:12ch}
 .close p{color:var(--muted);max-width:34ch;font-size:var(--fs-h3)}
 .close-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}

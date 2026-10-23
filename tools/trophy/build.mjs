@@ -156,7 +156,8 @@ const poses = Array.from({ length: FRAMES }, (_, f) => {
 const frameGroups = (key) => poses.map((p, f) => `<g class="hf${f === 0 ? " on" : ""}" data-f="${f}">${p[key]}</g>`).join("");
 
 // The one lit accent: a glint on the bowl where the key light lands
-const glint = `<g class="glint">${D([at([side[0] * 22 - sx * 18, side[1] * 22 - sy * 18, Z0 + 112])], { size: 1.6, tone: "hi" })}</g>`;
+const glint = `<g class="glint">${D([at([side[0] * 22 - sx * 18, side[1] * 22 - sy * 18, Z0 + 112])], { size: 1.6, tone: "hi" })}</g>` +
+  `<g class="glint">${D([at([-side[0] * 30 - sx * 30, -side[1] * 30 - sy * 30, TOP + 1])], { size: 1.3, tone: "hi" })}</g>`;
 
 const svg = k.figureSvg({
   width: WIDTH,

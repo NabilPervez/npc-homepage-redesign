@@ -1,0 +1,27 @@
+/* Trophy beside the statement: still, with the gold catching light. No spin, no sweep. */
+.trophy{position:relative;width:min(100%,420px);margin-inline:auto}
+.stage{aspect-ratio:520/560;background:radial-gradient(48% 40% at 50% 44%,rgb(221 184 74/.14),transparent 70%)}
+.trophy-svg .hf{display:none}
+.trophy-svg .hf.on{display:inline}
+
+/* Recolour the kit's grey ramp: the plinth in NPC ink, the turned parts in gold. */
+.trophy-svg{
+  --anatomy-paper:#0D1522;--anatomy-face:#121C2C;--anatomy-top:#16223A;
+  --anatomy-shade-0:#060B14;--anatomy-shade-1:#0A1220;--anatomy-shade-2:#0E1828;--anatomy-shade-3:#132036;
+  --anatomy-hi:#8D9CB4;--anatomy-mid:#3A4A66;--anatomy-lo:#26324A;--anatomy-faint:#1C2638;
+  --anatomy-halo:#000;--anatomy-dot:#E2EAF4}
+.trophy-svg .au{
+  --anatomy-paper:#B8862A;--anatomy-face:#C99A35;--anatomy-top:#F5D97A;
+  --anatomy-shade-0:#5A3D0C;--anatomy-shade-1:#8A5F16;--anatomy-shade-2:#C08D2C;--anatomy-shade-3:#E2B64E;
+  --anatomy-hi:#FFF1C4;--anatomy-mid:#8A5F16;--anatomy-lo:#6B4710;--anatomy-faint:#7E5814;--anatomy-dot:#FFF6DA}
+.trophy-svg .au-inside{fill:#3E2A08}
+.trophy-svg .glint circle{fill:#fff;opacity:1}
+
+/* Shine: the gold breathes brighter and the key-light glints twinkle. */
+@media (prefers-reduced-motion:no-preference){
+  .trophy-svg .au{animation:gleam 5s ease-in-out infinite}
+  @keyframes gleam{0%,100%{filter:none}50%{filter:brightness(1.16) saturate(1.08)}}
+  .trophy-svg .glint{animation:glint 5s ease-in-out infinite}
+  .trophy-svg .glint+.glint{animation-delay:-2.5s}
+  @keyframes glint{0%,55%,100%{opacity:0}65%{opacity:1}}
+}

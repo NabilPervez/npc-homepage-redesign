@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react';
+import Trophy from './Trophy';
+import Reveal from './Reveal';
 import './Statement.css';
 
 // The statement fills with ink word by word as it scrolls through the screen (khyzr manifesto idea).
@@ -40,13 +42,20 @@ export default function Statement() {
 
   return (
     <section className="section statement" aria-label="What NPC is">
-      <div className="wrap">
-        <span className="label">Why NPC</span>
-        <p ref={ref} className="say">
-          {TEXT.split(' ').map((w, i) => (
-            <span key={i}><span className="w">{w}</span>{' '}</span>
-          ))}
-        </p>
+      <div className="wrap st-grid">
+        <div>
+          <span className="label">Why NPC</span>
+          <p ref={ref} className="say">
+            {TEXT.split(' ').map((w, i) => (
+              <span key={i}><span className="w">{w}</span>{' '}</span>
+            ))}
+          </p>
+        </div>
+        <Reveal className="st-award" delay={1}>
+          <span className="label">Award-winning creative</span>
+          <div className="trophy"><Trophy /></div>
+          <p className="st-cap">Tempest Award · Best Social Experience</p>
+        </Reveal>
       </div>
     </section>
   );

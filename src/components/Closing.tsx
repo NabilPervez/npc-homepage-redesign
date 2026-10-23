@@ -91,6 +91,8 @@ export function Close() {
     );
   return (
     <section className="section close" id="contact" aria-labelledby="close-title">
+      <div className="ring" aria-hidden="true"><div className="pattern" /></div>
+      <div className="ring" aria-hidden="true"><div className="pattern" /></div>
       <div className="wrap close-in">
         <Reveal as="span" className="label">Next step</Reveal>
         <Reveal as="h2" id="close-title" delay={1}>Everything starts <span className="gold">with a call.</span></Reveal>

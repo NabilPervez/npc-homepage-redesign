@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import Proof from './components/Proof';
 import Statement from './components/Statement';
 import Offerings from './components/Offerings';
+import Award from './components/Award';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Proof />
         <Statement />
         <Offerings />
+        <Award />
       </main>
     </>
   );

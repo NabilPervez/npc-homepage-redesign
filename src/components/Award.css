@@ -1,0 +1,63 @@
+/* Award-winning creative: a case (reality / move / payoff) beside a Fig 1 card holding the
+   isometric trophy, then the work gallery. */
+.award-grid{display:grid;gap:40px;align-items:center}
+@media (min-width:960px){.award-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}}
+.award-copy{display:grid;gap:20px}
+.award h2{font-size:var(--fs-feat);line-height:1.2;max-width:22ch}
+.case{border-top:1px solid var(--hair);padding-top:20px;display:grid;gap:16px}
+.case-k{font-size:var(--fs-sm);font-weight:500;color:var(--gold-3)}
+.case dl{margin:0;display:grid;gap:14px}
+.case dl div{display:grid;grid-template-columns:96px 1fr;gap:12px}
+.case dt{font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding-top:2px}
+.case dd{margin:0;font-size:var(--fs-sm);color:var(--muted)}
+
+/* The card */
+.plate{margin:0;border:1px solid var(--hair);border-radius:var(--radius);background:linear-gradient(180deg,var(--ink-2),var(--ink));padding:16px;display:grid;gap:4px}
+.plate-top,.plate-bot{display:flex;justify-content:space-between;gap:12px;font-size:var(--fs-micro);color:var(--faint)}
+.plate-top span:last-child,.plate .ro{color:var(--gold-5)}
+.stage{max-width:440px;width:100%;margin:0 auto;aspect-ratio:520/560}
+
+/* Recolour the kit's grey ramp: the plinth in NPC ink, the turned parts in gold. */
+.trophy-svg{
+  --anatomy-paper:#0D1522;--anatomy-face:#121C2C;--anatomy-top:#16223A;
+  --anatomy-shade-0:#060B14;--anatomy-shade-1:#0A1220;--anatomy-shade-2:#0E1828;--anatomy-shade-3:#132036;
+  --anatomy-hi:#8D9CB4;--anatomy-mid:#3A4A66;--anatomy-lo:#26324A;--anatomy-faint:#1C2638;
+  --anatomy-halo:#000;--anatomy-dot:#E2EAF4}
+.trophy-svg .au{
+  --anatomy-paper:#B8862A;--anatomy-face:#C99A35;--anatomy-top:#F5D97A;
+  --anatomy-shade-0:#5A3D0C;--anatomy-shade-1:#8A5F16;--anatomy-shade-2:#C08D2C;--anatomy-shade-3:#E2B64E;
+  --anatomy-hi:#FFF1C4;--anatomy-mid:#8A5F16;--anatomy-lo:#6B4710;--anatomy-faint:#7E5814;--anatomy-dot:#FFF6DA}
+.trophy-svg .au-inside{fill:#3E2A08}
+.trophy-svg .ink .iso-solid[data-tone] .iso-top{fill:#16223A}
+.trophy-svg .glint circle{fill:#fff;opacity:1}
+
+/* Assemble on reveal: plinth, then stem, bowl, handles, each fading and settling from above.
+   World z maps straight to screen y in this camera, so a plain translateY is a true lift. */
+@media (prefers-reduced-motion:no-preference){
+  .js .plate .part{opacity:0;transform:translateY(-26px);transition:opacity .9s var(--ease),transform 1.1s var(--ease)}
+  .js .plate .p-plinth{transform:translateY(14px)}
+  .js .plate.in .part{opacity:1;transform:none}
+  .js .plate.in .p-stem{transition-delay:.18s}
+  .js .plate.in .p-bowl{transition-delay:.34s}
+  .js .plate.in .p-handle,.js .plate.in .p-handle2{transition-delay:.5s}
+  .plate.in .glint{animation:glint 4.8s ease-in-out 1.6s infinite}
+  @keyframes glint{0%,70%,100%{opacity:0}80%{opacity:1}}
+}
+
+/* Gallery */
+.gallery-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:72px 0 20px}
+.gallery-head a{font-size:var(--fs-sm);color:var(--gold-3);text-decoration:none}
+.gallery{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-inline:var(--gutter);scroll-padding-inline:var(--gutter);scrollbar-width:none;padding-bottom:4px}
+.gallery::-webkit-scrollbar{display:none}
+.g{position:relative;scroll-snap-align:start;border-radius:16px;overflow:hidden;background:var(--ink-2);box-shadow:inset 0 0 0 1px var(--hair);aspect-ratio:4/3}
+.g img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.g:hover img{transform:scale(1.04)}
+.g span{position:absolute;left:10px;bottom:10px;font-size:var(--fs-micro);font-weight:500;padding:6px 10px;border-radius:999px;background:rgb(7 16 31/.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+@media (min-width:860px){
+  .gallery{grid-auto-flow:row dense;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;overflow:visible;
+    max-width:calc(var(--container) + var(--gutter)*2);margin:0 auto}
+  .g{aspect-ratio:auto}
+  .g-wide{grid-column:span 2}
+  .g-tall{grid-row:span 2}
+}

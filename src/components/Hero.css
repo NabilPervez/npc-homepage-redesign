@@ -1,0 +1,36 @@
+/* Hero: the business card front, full-bleed. Pattern ripples outward in two rings,
+   gold N breathes, headline shimmers. Fits one phone screen (svh, not vh). */
+.hero{position:relative;overflow:hidden;isolation:isolate;min-height:calc(100svh - 64px);max-height:900px;display:grid;place-items:center;text-align:center;
+  background:radial-gradient(ellipse 70% 60% at 50% 45%,#0F1A2C 0%,var(--ink) 70%)}
+.hero .pattern{position:absolute;inset:0;background:url(/img/hero-pattern.png) 0 0/56px}
+.hero .dim{filter:grayscale(1) brightness(.85);opacity:.12}
+.ring{position:absolute;inset:-40%;opacity:0;pointer-events:none;
+  -webkit-mask:radial-gradient(circle closest-side,transparent 78%,rgb(0 0 0/.4) 88%,#000 94%,rgb(0 0 0/.4) 98%,transparent 100%) 50% 50%/0 0 no-repeat;
+  mask:radial-gradient(circle closest-side,transparent 78%,rgb(0 0 0/.4) 88%,#000 94%,rgb(0 0 0/.4) 98%,transparent 100%) 50% 50%/0 0 no-repeat}
+.ring .pattern{filter:brightness(1.6) saturate(1.35)}
+.hero .clear{position:absolute;inset:0;background:radial-gradient(ellipse 52% 50% at 50% 50%,rgb(7 16 31/.95) 0%,rgb(7 16 31/.6) 60%,rgb(7 16 31/0) 100%)}
+.hero .sheen{position:absolute;inset:-50%;pointer-events:none;mix-blend-mode:screen;
+  background:linear-gradient(115deg,transparent 40%,rgb(255 224 140/.05) 48%,rgb(255 236 180/.1) 50%,rgb(255 224 140/.05) 52%,transparent 60%);
+  transform:translate(calc(var(--tx,0)*18%),calc(var(--ty,0)*12%));transition:transform .6s var(--ease)}
+.lockup{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:20px;padding-block:48px 64px}
+.nmark{width:clamp(88px,24vw,140px);height:auto;margin:-8px 0}
+.consult{font-size:var(--fs-micro);letter-spacing:.42em;margin-right:-.42em;color:var(--gold-3);text-transform:uppercase}
+.nw{white-space:nowrap}
+.shine{background:var(--grad);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lede{font-size:var(--fs-h3);color:var(--muted);max-width:28ch}
+.ctas{display:flex;flex-direction:column;gap:12px;width:100%;max-width:320px}
+.ctas .btn{width:100%}
+@media (min-width:760px){.ctas{flex-direction:row;max-width:none;width:auto}.ctas .btn{width:auto}.hero .pattern{background-size:80px}}
+
+@media (prefers-reduced-motion:no-preference){
+  .enter{animation:enter 1.2s var(--ease) .1s both}
+  .enter.d1{animation-delay:.24s}.enter.d2{animation-delay:.38s}
+  @keyframes enter{from{opacity:0;transform:translateY(24px)}}
+  .ring{animation:ripple 12s var(--ease) infinite}.ring+.ring{animation-delay:-6s}
+  @keyframes ripple{0%{-webkit-mask-size:0 0;mask-size:0 0;opacity:0}10%{opacity:.9}70%{opacity:.75}100%{-webkit-mask-size:240% 240%;mask-size:240% 240%;opacity:0}}
+  .shine{animation:shimmer 6s linear infinite}
+  @keyframes shimmer{to{background-position:-200% 0}}
+  .nmark{animation:enter 1.2s var(--ease) .1s both,breathe 6s ease-in-out 1.4s infinite}
+  @keyframes breathe{50%{filter:brightness(1.18) drop-shadow(0 0 18px rgb(221 184 74/.25))}}
+}
+@media (prefers-reduced-motion:reduce){.ring{display:none}}

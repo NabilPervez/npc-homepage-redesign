@@ -1,0 +1,29 @@
+/* Nav: mark, centred links, one CTA, frosted on dark. Phones: mark + menu button. */
+.nav-bar{position:sticky;top:0;z-index:50;background:rgb(7 16 31/.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--hair)}
+.nav{display:flex;align-items:center;gap:16px;height:64px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:.32em;font-size:var(--fs-micro);color:var(--gold-3);margin-right:auto}
+.mark img{width:32px;height:32px}
+.links{display:none;gap:32px;font-size:var(--fs-sm);font-weight:500}
+.links a{text-decoration:none;color:var(--muted);transition:color .4s var(--ease)}
+.links a:hover{color:var(--text)}
+.nav .nav-cta{display:none;min-height:40px;padding:0 18px;font-size:var(--fs-sm)}
+.menu-btn{display:grid;place-content:center;gap:6px;width:48px;height:48px;margin-right:-12px;background:none;border:0;cursor:pointer}
+.menu-btn span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px}
+@media (min-width:860px){
+  .links{display:flex;position:absolute;left:50%;transform:translateX(-50%)}
+  .nav .nav-cta{display:inline-flex}
+  .menu-btn{display:none}
+}
+
+.sheet{width:100%;max-width:100%;height:100dvh;max-height:100dvh;margin:0;padding:0;border:0;background:var(--ink);color:var(--text)}
+.sheet::backdrop{background:rgb(7 16 31/.6)}
+.sheet-in{display:flex;flex-direction:column;gap:32px;min-height:100%;padding:16px var(--gutter) 40px;
+  background:radial-gradient(120% 60% at 100% 0%,rgb(200 139 32/.12),transparent 60%)}
+.sheet-close{align-self:flex-end;width:48px;height:48px;background:none;border:1px solid var(--hair-2);border-radius:999px;cursor:pointer;font-size:var(--fs-body)}
+.sheet nav{display:grid;border-top:1px solid var(--hair)}
+.sheet nav a{display:block;padding:18px 0;border-bottom:1px solid var(--hair);text-decoration:none;font-size:var(--fs-feat);font-weight:600;letter-spacing:var(--track)}
+.sheet .btn{margin-top:auto}
+@media (prefers-reduced-motion:no-preference){
+  .sheet[open]{animation:sheet-in .5s var(--ease)}
+  @keyframes sheet-in{from{opacity:0;transform:translateY(-12px)}}
+}

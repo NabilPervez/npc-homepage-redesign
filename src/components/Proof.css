@@ -1,0 +1,29 @@
+/* Proof strip: stats on the left, a hairline, two rows of client names drifting in opposite directions.
+   Phones: stats on top, names full width below. A pause button meets WCAG 2.2.2. */
+.proof{border-top:1px solid var(--hair);padding-block:40px}
+.proof-in{display:grid;gap:28px;align-items:center;position:relative}
+.stats{display:flex;gap:32px;margin:0}
+.stats dd{margin:0;display:grid;gap:4px}
+.stats b{font-size:var(--fs-h1);font-weight:600;line-height:1;letter-spacing:var(--track);font-variant-numeric:tabular-nums}
+.stats i{font-style:normal;color:var(--gold-3)}
+.stats span{font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.names{min-width:0;overflow:hidden;display:grid;gap:14px;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.row{display:flex;width:max-content}
+.track{display:flex;gap:40px;padding-right:40px;animation:marq 60s linear infinite}
+.row.rev .track{animation-direction:reverse;animation-duration:72s}
+.track li{font-size:var(--fs-h3);font-weight:600;letter-spacing:var(--track);color:var(--faint);white-space:nowrap}
+.names.paused .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-100%)}}
+.pause{justify-self:start;width:44px;height:44px;border-radius:999px;border:1px solid var(--hair-2);background:none;cursor:pointer;font-size:11px;color:var(--muted)}
+@media (min-width:960px){
+  .proof-in{grid-template-columns:auto 1fr auto;gap:40px}
+  .stats{padding-right:40px;border-right:1px solid var(--hair)}
+  .pause{justify-self:end}
+}
+@media (prefers-reduced-motion:reduce){
+  .track{animation:none}
+  .names{overflow-x:auto;-webkit-mask:none;mask:none}
+  .row .track[aria-hidden]{display:none}
+  .pause{display:none}
+}

@@ -25,7 +25,7 @@ export default function Hero() {
       <div className="ring" aria-hidden="true"><div className="pattern" /></div>
       <div className="clear" aria-hidden="true" />
       <div className="wrap lockup">
-        <img className="nmark enter" src="/img/nmark.png" alt="" width="160" height="160" fetchPriority="high" />
+        <img className="nmark enter" src="/img/nmark.png" alt="" width="160" height="160" {...{ fetchpriority: 'high' }} />
         <p className="consult enter d1">Nabil Pervez Consulting</p>
         <h1 id="hero-title" className="enter d1">
           <span className="nw">Brand. Web.</span> <span className="nw">AI. Product.</span>

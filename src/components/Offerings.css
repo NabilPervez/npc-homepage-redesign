@@ -1,0 +1,62 @@
+/* "One NPC. Four ways in." The four-quadrant lattice tile (khyzr "Many ways in" pattern),
+   one colour family per offering, copy on both sides on desktop.
+   Phones: the tile first, then the four offerings stacked, each with its colour key. */
+.ways{display:grid;gap:40px}
+.tile{display:grid;grid-template-columns:1fr 1fr;aspect-ratio:1;width:100%;max-width:520px;margin-inline:auto;overflow:hidden;border-radius:4px}
+.q{position:relative;overflow:hidden}
+.q b{position:absolute;left:12px;bottom:10px;font-size:var(--fs-micro);font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgb(7 16 31/.7);color:var(--text)}
+.lat{width:100%;height:100%}
+.lat .arc,.lat .arc circle{fill:none}
+.lat-brand .bg{fill:var(--brand-bg)}
+.lat-brand .c0{stroke:var(--brand-b)}.lat-brand .c1{stroke:var(--brand-a)}.lat-brand .c2{stroke:var(--brand-c)}
+.lat-web .bg{fill:var(--web-bg)}
+.lat-web .c0{stroke:var(--web-a)}.lat-web .c1{stroke:var(--web-b)}.lat-web .c2{stroke:var(--web-c)}
+.lat-ai .bg{fill:var(--ai-bg)}
+.lat-ai .c0{stroke:var(--ai-a)}.lat-ai .c1{stroke:var(--ai-b)}.lat-ai .c2{stroke:var(--ai-c)}
+.lat .arc:not(g){stroke-width:26}
+.lat-product .bg{fill:var(--prod-bg)}
+.lat-product .arc circle{stroke:var(--gold-3);stroke-width:1.6}
+.q-product{box-shadow:inset 0 0 0 1px var(--hair-2)}
+
+/* Copy blocks */
+/* Phones: the sides dissolve so the tile leads, then Brand, Web, AI, Product in reading order */
+.side{display:contents}
+.tile{order:-1}
+@media (min-width:1000px){.side{display:grid;gap:40px}.tile{order:0}}
+.oc{display:grid;gap:10px;padding-left:16px;border-left:2px solid var(--k)}
+.oc-brand{--k:var(--brand-a)}.oc-web{--k:var(--web-a)}.oc-ai{--k:var(--ai-b)}.oc-product{--k:var(--gold-1)}
+.oc h3{font-size:var(--fs-h2);font-weight:600;letter-spacing:var(--track)}
+.oc h3 .line{color:var(--muted)}
+.oc p{color:var(--muted);font-size:var(--fs-sm);max-width:34ch}
+.oc ul{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.oc li{font-size:var(--fs-micro);font-weight:500;border:1px solid var(--hair-2);border-radius:999px;padding:6px 12px}
+
+@media (min-width:1000px){
+  .ways{grid-template-columns:minmax(0,1fr) minmax(0,520px) minmax(0,1fr);align-items:stretch;gap:48px}
+  .tile{grid-column:2;grid-row:1}
+  .side{align-content:space-between}
+  .side-l{grid-column:1;grid-row:1}
+  .side-r{grid-column:3;grid-row:1}
+  .oc-l{text-align:right;padding-left:0;padding-right:16px;border-left:0;border-right:2px solid var(--k);justify-items:end}
+  .oc-l ul{justify-content:flex-end}
+  .q b{display:none}
+  /* Hovering an offering's copy brings its quadrant forward and quiets the rest */
+  .ways:has(.oc-brand:hover) .q:not(.q-brand),
+  .ways:has(.oc-web:hover) .q:not(.q-web),
+  .ways:has(.oc-ai:hover) .q:not(.q-ai),
+  .ways:has(.oc-product:hover) .q:not(.q-product){opacity:.35}
+  .q{transition:opacity .6s var(--ease)}
+}
+
+.how-buy{margin-top:56px;padding-top:24px;border-top:1px solid var(--hair);display:grid;gap:12px;font-size:var(--fs-sm);color:var(--muted)}
+.how-buy b{color:var(--text);font-weight:500}
+@media (min-width:760px){.how-buy{grid-template-columns:1fr 1fr;gap:32px}}
+
+/* Reveal: arcs draw in one after another when the tile comes into view */
+@media (prefers-reduced-motion:no-preference){
+  .js .tile .arc,.js .tile .arc circle{stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset 1.6s var(--ease);transition-delay:calc(var(--i) * 120ms)}
+  .js .tile .q-ai .arc{transition-delay:calc(var(--i) * 120ms + 200ms)}
+  .js .tile .q-web .arc{transition-delay:calc(var(--i) * 120ms + 400ms)}
+  .js .tile .q-product .arc circle{transition-delay:calc(var(--i) * 120ms + 600ms)}
+  .js .tile.in .arc,.js .tile.in .arc circle{stroke-dashoffset:0}
+}

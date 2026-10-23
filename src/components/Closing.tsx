@@ -43,21 +43,40 @@ export function About() {
   );
 }
 
+function VoiceList({ hidden }: { hidden?: boolean }) {
+  return (
+    <ul className="vtrack" aria-hidden={hidden || undefined}>
+      {voices.map((v) => (
+        <li key={v.name} className="v">
+          <figure>
+            <blockquote><p>{v.quote}</p></blockquote>
+            <figcaption><b>{v.name}</b>{v.role}</figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// Testimonials drift sideways on their own; hover, touch or focus holds them, the button stops them.
+// The second copy makes the loop seamless and is hidden from screen readers.
 export function Voices() {
+  const [paused, setPaused] = useState(false);
   return (
     <section className="section" id="voices" aria-labelledby="voices-title">
       <div className="wrap">
         <Reveal className="head"><h2 id="voices-title">In their words.</h2><p>Founders and leaders who have worked with Nabil.</p></Reveal>
-        <ul className="voices">
-          {voices.map((v, i) => (
-            <Reveal as="li" key={v.name} className="v" delay={i}>
-              <figure>
-                <blockquote><p>{v.quote}</p></blockquote>
-                <figcaption><b>{v.name}</b>{v.role}</figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </ul>
+      </div>
+      <Reveal className={`voices${paused ? ' paused' : ''}`}>
+        <div className="vrow" tabIndex={0} role="group" aria-label="Testimonials">
+          <VoiceList />
+          <VoiceList hidden />
+        </div>
+      </Reveal>
+      <div className="wrap vfoot">
+        <button type="button" className="pause" onClick={() => setPaused((p) => !p)} aria-pressed={paused}
+          aria-label={paused ? 'Play testimonials' : 'Pause testimonials'}>{paused ? '▶' : '❚❚'}</button>
+        <span>{voices.length} testimonials</span>
       </div>
     </section>
   );

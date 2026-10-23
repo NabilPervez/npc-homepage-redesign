@@ -85,8 +85,17 @@ export const steps = [
   { n: '03', id: 'launch', title: 'Launch.', text: 'We build it, you review it within 48 hours, it goes live.' },
 ] as const;
 
+// Testimonials, verbatim from the portfolio site (Colter's with the asterisk the original site uses)
 export const voices = [
-  { quote: "He's an X-Factor. He immediately improves the team he's working with.", name: 'Dustin Steiner', role: 'Senior Associate, GALE' },
-  { quote: 'Organized, fast, clear communicator.', name: 'Colter Hochstetler', role: 'Founder, SunSpear' },
+  { quote: "If there's one thing I can say about Nabil and his presence in a company, it's that he's an X-Factor. He immediately improves the team he's working with.", name: 'Dustin Steiner', role: 'Senior Associate, Public Relations' },
+  { quote: "The question is not 'Is Mr. Pervez good enough to work with us?' Rather, the question is 'Is my organization and project worthy of Mr. Pervez's attention?' Think carefully.", name: 'Dylan Kahn', role: 'Founder, SunSpear Games' },
+  { quote: "Organized, fast, clear communicator. I always look forward to meetings Nabil leads because I know we're going to get sh*t done.", name: 'Colter Hochstetler', role: 'Director of Game, SunSpear Games' },
+  { quote: 'I highly recommend Nabil for any company that values consistent execution, clear communication, and a strong culture.', name: 'Kevin Wagner', role: 'CEO, SunSpear Games' },
+  { quote: 'Nabil is an incredible technologist, with a particular gift for identifying business opportunities within a shifting digital landscape.', name: 'Eric Swayne', role: 'Analytics Leader & Solution Architect' },
+  { quote: 'I have been consistently impressed by his remarkable skills, dedication, and management abilities. He has consistently demonstrated an ability to manage complex projects.', name: 'Markel Lee', role: 'Creative Director, AOE Creative' },
+  { quote: "Nabil's strategic marketing approach consistently achieved impressive results aligned with business objectives. His leadership played a pivotal role in many project successes.", name: 'Christopher Dykes', role: 'Freelance Motion Designer' },
+  { quote: 'Nabil seamlessly blends professionalism with an informal style, making collaboration both efficient and enjoyable. Being managed by Nabil was a pleasure.', name: 'Dávid Dolyák', role: 'UX/UI & Software Development' },
+  { quote: 'Hustle might be his middle name. I would add Nabil into my leadership structure without a second thought.', name: 'Trenton Pierson', role: 'Therapeutic Counselor' },
+  { quote: "Nabil is a well-connected and eloquent speaker... He's a joy to talk with and is an asset to any team.", name: 'Godswill Ugwa Jr.', role: 'Community Manager, VIZ Media' },
   { quote: 'I can always rely on him, no matter the issue.', name: 'Jason Gures', role: 'CEO, Broad.IO' },
 ];

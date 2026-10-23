@@ -27,7 +27,7 @@ function Talk() {
 
 function Plan() {
   return (
-    <>
+    <g transform="translate(23 0)">
       {/* the one scope document */}
       <path d="M50 22h78l22 22v94a6 6 0 0 1-6 6H50a6 6 0 0 1-6-6V28a6 6 0 0 1 6-6z" className="l" {...P} />
       <path d="M128 22v22h22" className="l" {...P} />
@@ -40,20 +40,16 @@ function Plan() {
           <path d={`M78 ${y}h${52 - i * 10}`} className="f" {...P} />
         </g>
       ))}
-      {/* fixed price tag, hanging off the page */}
-      <path d="M150 92l30-2 22 22-28 28-22-22z" className="g" {...P} />
-      <circle cx="162" cy="100" r="4" className="ac" {...P} />
-      <path d="M176 112c-6-2-10 2-6 6s0 8-6 6M173 108v2M170 124v2" className="ac" {...P} />
       {/* half to start: a split bar */}
       <rect x="60" y="124" width="70" height="8" rx="4" className="l" {...P} />
       <rect x="60" y="124" width="35" height="8" rx="4" className="gfill" />
-    </>
+    </g>
   );
 }
 
 function Launch() {
   return (
-    <>
+    <g transform="translate(17 -4)">
       {/* the live site in a browser */}
       <rect x="28" y="30" width="150" height="104" rx="8" className="l" {...P} />
       <path d="M28 46h150" className="l" {...P} />
@@ -65,11 +61,10 @@ function Launch() {
       <rect x="120" y="58" width="46" height="46" rx="6" className="l" {...P} />
       <path d="M128 96l10-12 8 8 6-6 8 10" className="f" {...P} />
       <rect x="40" y="108" width="40" height="12" rx="6" className="gfill" />
-      {/* launch: the arrow leaving the frame, review tick beside it */}
-      <path d="M170 116l40-46M210 70h-18M210 70v18" className="ac" {...P} />
-      <circle cx="206" cy="124" r="12" className="a" {...P} />
-      <path d="M200 124l4 4 8-8" className="ac" {...P} />
-    </>
+      {/* approved and live: the review tick on the window's corner */}
+      <circle cx="178" cy="134" r="13" className="a" {...P} />
+      <path d="M172 134l4 4 8-8" className="ac" {...P} />
+    </g>
   );
 }
 

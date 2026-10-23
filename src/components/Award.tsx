@@ -1,41 +1,58 @@
-import { useEffect, useState } from 'react';
-import Reveal, { useInView } from './Reveal';
+import { useEffect, useRef, useState } from 'react';
+import Reveal from './Reveal';
 import './iso.css';
 import './Award.css';
 
+// Award-winning creative: just the trophy, turning on its plinth with a sheen running over the gold.
+// Nabil, 2026-10-23: "don't explain all the details, just show the trophy".
 export default function Award() {
-  const fig = useInView<HTMLDivElement>(0.35);
-  // The trophy is ~150 KB of precomputed SVG paths, so it loads as its own chunk after first paint
-  const [art, setArt] = useState('');
+  const stage = useRef<HTMLDivElement>(null);
+  const [art, setArt] = useState<{ svg: string; frames: number } | null>(null);
+
+  // ~100 KB gzipped of precomputed paths, so it loads as its own chunk after first paint
   useEffect(() => {
-    import('./trophyArt').then((m) => setArt(m.TROPHY_SVG));
+    import('./trophyArt').then((m) => setArt({ svg: m.TROPHY_SVG, frames: m.TROPHY_FRAMES }));
   }, []);
+
+  // Turn: step through the handle poses while the figure is on screen. Still under reduced motion.
+  useEffect(() => {
+    const el = stage.current;
+    if (!el || !art || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    const back = [...el.querySelectorAll<SVGGElement>('.p-handle .hf')];
+    const front = [...el.querySelectorAll<SVGGElement>('.p-handle2 .hf')];
+    const FPS = 12;
+    let frame = 0, last = 0, f = 0, onScreen = false;
+    const tick = (now: number) => {
+      if (now - last >= 1000 / FPS) {
+        last = now;
+        back[f].classList.remove('on');
+        front[f].classList.remove('on');
+        f = (f + 1) % art.frames;
+        back[f].classList.add('on');
+        front[f].classList.add('on');
+      }
+      frame = onScreen ? requestAnimationFrame(tick) : 0;
+    };
+    const io = new IntersectionObserver(([e]) => {
+      onScreen = e.isIntersecting;
+      if (onScreen && !frame) frame = requestAnimationFrame(tick);
+    });
+    io.observe(el);
+    return () => { io.disconnect(); cancelAnimationFrame(frame); };
+  }, [art]);
+
   return (
     <section className="section award" id="award" aria-labelledby="award-title">
-      <div className="wrap award-grid">
-        <div className="award-copy">
-          <Reveal as="span" className="label">Award-winning creative</Reveal>
-          <Reveal as="h2" id="award-title" delay={1}>
-            Studio-grade work. <span className="muted">Proven on the biggest stages in gaming and entertainment.</span>
-          </Reveal>
-          <Reveal className="case" delay={2}>
-            <p className="case-k">Houston Outlaws · #BandTogether</p>
-            <dl>
-              <div><dt>The reality</dt><dd>A team in a brand-new city-based league had to win local fans from scratch.</dd></div>
-              <div><dt>Our move</dt><dd>The world's first esports player tour, pop-up shops, block parties and collectible regional merch.</dd></div>
-              <div><dt>The payoff</dt><dd>Tempest Award for Best Social Experience, and the most tweeted-about team in the league in Season 1.</dd></div>
-            </dl>
-          </Reveal>
-        </div>
-
-        {/* Fig 1 card: the trophy assembles from the plinth up when it scrolls into view */}
-        <figure className="iso plate" ref={fig}>
-          <div className="plate-top"><span>Fig 1</span><span>Tempest Award</span></div>
-          <div className="stage" dangerouslySetInnerHTML={{ __html: art }} />
-          <figcaption className="plate-bot"><span>Best Social Experience</span><span className="ro">Houston Outlaws · S1</span></figcaption>
-        </figure>
+      <div className="wrap award-in">
+        <Reveal className="head center">
+          <span className="label">Award-winning creative</span>
+          <h2 id="award-title">Work that wins. <span className="muted">Tempest Award, Best Social Experience.</span></h2>
+        </Reveal>
+        <Reveal className="trophy" delay={1}>
+          <div className="iso stage" ref={stage} dangerouslySetInnerHTML={{ __html: art?.svg ?? '' }} />
+          <div className="sheen" aria-hidden="true" />
+        </Reveal>
       </div>
-
     </section>
   );
 }

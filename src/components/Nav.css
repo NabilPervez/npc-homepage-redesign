@@ -6,8 +6,8 @@
 .links{display:none;gap:32px;font-size:var(--fs-sm);font-weight:500}
 .links a{text-decoration:none;color:var(--muted);transition:color .4s var(--ease)}
 .links a:hover{color:var(--text)}
-.nav .nav-cta{display:none;min-height:40px;padding:0 18px;font-size:var(--fs-sm)}
-.menu-btn{display:grid;place-content:center;gap:6px;width:48px;height:48px;margin-right:-12px;background:none;border:0;cursor:pointer}
+.nav .nav-cta{display:inline-flex;min-height:40px;padding:0 16px;font-size:var(--fs-sm);white-space:nowrap}
+.menu-btn{display:grid;place-content:center;gap:6px;width:44px;height:48px;margin-right:-10px;background:none;border:0;cursor:pointer}
 .menu-btn span{display:block;width:22px;height:1.5px;background:var(--text);border-radius:2px}
 @media (min-width:860px){
   .links{display:flex;position:absolute;left:50%;transform:translateX(-50%)}

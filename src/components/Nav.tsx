@@ -28,7 +28,7 @@ export default function Nav() {
             <a key={l.href} href={l.href}>{l.label}</a>
           ))}
         </nav>
-        <a className="btn btn-gold nav-cta" href={BOOKING_URL} target="_blank" rel="noopener">Book a call</a>
+        <a className="btn btn-gold nav-cta" href={BOOKING_URL} target="_blank" rel="noopener">Book now</a>
         <button type="button" className="menu-btn" aria-label="Open menu" aria-haspopup="dialog" onClick={open}>
           <span /><span />
         </button>

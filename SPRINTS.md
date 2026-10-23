@@ -75,3 +75,15 @@ follow Quiet Precision layout discipline, and sell four offerings: **Brand. Web.
 | Client logos are third-party trademarks and none exist as clean files in the repos | Logo strip can't be real logos | Use typeset name rows; drop real logo files into `src/assets/logos` later |
 | Award claims | Credibility | Only use the award stated in the portfolio text |
 | Portfolio images are large | Slow mobile load | Copy a curated set, resize, lazy-load |
+
+## Status (2026-10-23)
+| Sprint | Status | Commit |
+|---|---|---|
+| 1 Foundation | Done, pushed | Sprint 1 |
+| 2 Story and offer | Done, pushed | Sprint 2 |
+| 3 Award-winning creative | Done, pushed (trophy video deferred) | Sprint 3 |
+| 4 Close and polish | Done, pushed | Sprint 4 |
+
+Checked at 375, 768 and 1280 px: no horizontal scroll, one h1, every image has alt text and loads,
+no console errors in the production build. Not yet done: real client logo files, Lighthouse run on
+the deployed Netlify URL, trophy product-reveal video.

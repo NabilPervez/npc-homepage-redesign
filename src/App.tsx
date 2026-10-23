@@ -4,6 +4,7 @@ import Proof from './components/Proof';
 import Statement from './components/Statement';
 import Offerings from './components/Offerings';
 import Award from './components/Award';
+import { About, Close, Footer, Process, Voices } from './components/Closing';
 
 export default function App() {
   return (
@@ -17,7 +18,12 @@ export default function App() {
         <Statement />
         <Offerings />
         <Award />
+        <Process />
+        <Voices />
+        <About />
+        <Close />
       </main>
+      <Footer />
     </>
   );
 }

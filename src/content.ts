@@ -54,7 +54,7 @@ export type Column = { kind: 'tall' | 'stack' | 'wide' | 'sq'; tiles: Tile[] };
 const t = (slug: string, client: string, pillar: Pillar, alt: string, ratio: number): Tile => ({ slug, client, pillar, alt, ratio });
 export const workColumns: Column[] = [
   { kind: 'tall', tiles: [t('akon-pass', 'A-KON', 'Brand', 'A-KON daily pass with the anime mascot', 0.71)] },
-  { kind: 'stack', tiles: [t('c9-tees', 'Cloud9 × One Piece', 'Brand', 'Cloud9 × One Piece tees and merch', 2), t('outlaws-tour', 'Houston Outlaws', 'Brand', 'Fans at a Houston Outlaws player tour stop', 1.33)] },
+  { kind: 'stack', tiles: [t('c9-tees', 'Cloud9 × One Piece', 'Brand', 'Cloud9 × One Piece tees and merch', 2), t('outlaws-tour', 'Houston Outlaws', 'Brand', 'Houston Outlaws merch and promo items', 1.33)] },
   { kind: 'wide', tiles: [t('redbull-run', 'Red Bull', 'Product', 'Red Bull arcade cabinet activation', 1.78)] },
   { kind: 'stack', tiles: [t('lego-2', 'LEGO Games', 'Brand', 'LEGO Games branded backpack', 2), t('ow-houston', 'Overwatch League', 'Brand', 'Overwatch League Houston in-game spray', 1)] },
   { kind: 'tall', tiles: [t('lego-1', 'LEGO Games', 'Brand', 'LEGO Batman on a LEGO Games brand layout', 0.79)] },

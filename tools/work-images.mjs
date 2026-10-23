@@ -14,7 +14,7 @@ export const PICKS = [
   ['lego-3', 'lego_27/fdb310126553707.615376f58e9ef.png'],
   ['ow-houston', 'overwatch-league-in-game-sprays/overwatch-league-in-game-sprays-Houston.png'],
   ['ow-paris', 'overwatch-league-in-game-sprays/overwatch-league-in-game-sprays-Paris.png'],
-  ['outlaws-tour', 'outlaws/outlaws-IMG_20180518_203602-scaled.jpg'],
+  ['outlaws-tour', 'outlaws/outlaws-desktop_outlaws_promotional_items-scaled.jpg'],
   ['akon-pass', 'a-kon/a-kon-AKON_DailyPass.jpg'],
   ['akon-badge', 'a-kon/a-kon-AKON_Badge-Day.png'],
   ['freshcut-m1', 'freshcut/freshcut-m1.jpg'],
